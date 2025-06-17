@@ -1,4 +1,4 @@
-import { useAuthState } from '../../../stores/useAuthStore';
+import { useAuthState } from '../../stores/useAuthStore';
 import { usePostUserAuthenticate } from '../useUser';
 
 export function useAuth() {

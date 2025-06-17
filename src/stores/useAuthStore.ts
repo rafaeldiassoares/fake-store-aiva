@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { getToken, removeToken, setToken } from '../services/hooks/useToken';
+import { getToken, removeToken, setToken } from '../hooks/useToken';
 
 interface AuthState {
   token: string | null;

@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { getToken } from './hooks/useToken';
 import { QueryClient } from 'react-query';
+import { getToken } from '../hooks/useToken';
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
