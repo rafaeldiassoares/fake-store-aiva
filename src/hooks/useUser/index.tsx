@@ -1,6 +1,6 @@
 import { useMutation } from 'react-query';
-import type { Response } from '../../../@types';
-import { queryClient } from '../../api';
+import type { Response } from '../../@types';
+import { queryClient } from '../../services/api';
 import { postUserAuthenticate } from './api';
 
 type IPostUserAuthenticateResponse = {
