@@ -1,4 +1,5 @@
 import { FaStore, FaUser } from 'react-icons/fa';
+import CartIndicator from '../CartIndicator';
 
 export default function Header() {
   return (
@@ -28,8 +29,9 @@ export default function Header() {
               </a>
             </nav>
           </div>
-          <div className="flex items-center space-x-4">
-            <div className="flex items-center space-x-2" onClick={() => {}}>
+          <div className="mr-8 flex items-center space-x-4">
+            <div className="flex items-center gap-8" onClick={() => {}}>
+              <CartIndicator />
               <FaUser size={20} className="cursor-pointer text-white" />
             </div>
           </div>

@@ -6,6 +6,7 @@ import Admin from '../pages/Admin';
 import { StoreRoutes } from '../components/StoreRoutes';
 import Product from '../pages/Product';
 import Categories from '../pages/Categories';
+import Cart from '../pages/Cart';
 
 export default function Routes() {
   return (
@@ -17,6 +18,7 @@ export default function Routes() {
         <Route path="/" element={<Home />} />
         <Route path="/product/:id" element={<Product />} />
         <Route path="/categories/" element={<Categories />} />
+        <Route path="/cart" element={<Cart />} />
       </Route>
 
       <Route path="/login" element={<Login />} />
