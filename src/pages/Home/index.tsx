@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { useListProducts } from '../../hooks/useProducts';
 import Skeleton from 'react-loading-skeleton';
 import { useSearchParams } from 'react-router-dom';
+import Breadcrumb, { type BreadcrumbItem } from '../../components/Breadcrumb';
 import ProductCard from '../../components/ProductCard';
+import { useListProducts } from '../../hooks/useProducts';
 
 export default function Home() {
   const [limit, setLimit] = useState(12);
@@ -21,11 +22,21 @@ export default function Home() {
     }, 500);
   };
 
+  const breadcrumbItems: BreadcrumbItem[] = [{ name: 'Home', href: '/' }];
+
+  if (idCategory && nameCategory) {
+    breadcrumbItems.push({
+      name: nameCategory,
+    });
+  }
+
   return (
     <div>
       <div className="m-auto flex w-full max-w-5xl p-4 text-xl font-bold text-gray-700">
-        {idCategory ? `Products in Category: ${nameCategory}` : 'Products'}
+        Products
       </div>
+
+      <Breadcrumb breadcrumbItems={breadcrumbItems} />
 
       <div className="justify-left mx-auto flex max-w-5xl flex-wrap">
         {products?.length > 0

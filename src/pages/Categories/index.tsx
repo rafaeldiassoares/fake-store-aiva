@@ -1,6 +1,7 @@
 import Skeleton from 'react-loading-skeleton';
 import { useListCategories } from '../../hooks/useCategories';
 import CategoryCard from '../../components/CategoryCard';
+import Breadcrumb from '../../components/Breadcrumb';
 
 export default function Categories() {
   const { data: categories } = useListCategories();
@@ -11,7 +12,11 @@ export default function Categories() {
         Categories
       </div>
 
-      <div className="mx-auto flex max-w-5xl flex-wrap justify-center">
+      <Breadcrumb
+        breadcrumbItems={[{ name: 'Home', href: '/' }, { name: 'Categories' }]}
+      />
+
+      <div className="justify-left mx-auto flex max-w-5xl flex-wrap">
         {categories?.length > 0
           ? categories.map(
               (category: { id: string; image: string; name: string }) => (

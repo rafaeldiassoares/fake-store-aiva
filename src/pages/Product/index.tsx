@@ -6,6 +6,8 @@ import ProductCard from '../../components/ProductCard';
 import ProductSkeleton from '../../components/ProductsSkeleton';
 import type { Product } from '../../@types';
 import { useCartStore } from '../../stores/useCartStore';
+import Breadcrumb from '../../components/Breadcrumb';
+import Skeleton from 'react-loading-skeleton';
 
 export default function Product() {
   const { id } = useParams();
@@ -23,10 +25,24 @@ export default function Product() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div>
       <div className="m-auto flex w-full max-w-5xl p-4 text-xl font-bold text-gray-700">
-        <a href="/">Products</a> {' > '} {product?.title}
+        {product?.title}
       </div>
+
+      {product && (
+        <Breadcrumb
+          breadcrumbItems={[
+            { name: 'Home', href: '/' },
+            {
+              name: product?.category?.name,
+              href: `/?category-id=${product?.category?.id}&category-name=${product?.category?.name}`,
+            },
+            { name: product?.slug },
+          ]}
+        />
+      )}
+
       {product ? (
         <div className="mx-auto flex max-w-5xl flex-wrap justify-center">
           <div className="flex flex-row">
@@ -99,7 +115,13 @@ export default function Product() {
           </div>
         </div>
       ) : (
-        <>carregando</>
+        <div className="mx-auto flex max-w-5xl flex-wrap justify-center">
+          {Array.from({ length: 10 }).map((_, index) => (
+            <div key={index} className="m-2 flex w-56 flex-col bg-gray-200 p-4">
+              <Skeleton count={10} />
+            </div>
+          ))}{' '}
+        </div>
       )}
     </div>
   );

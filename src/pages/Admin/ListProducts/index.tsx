@@ -5,6 +5,8 @@ import type { Category, Product } from '../../../@types';
 import { FaEdit } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
 import SelectCategories from '../../../components/SelectCategories';
+import Skeleton from 'react-loading-skeleton';
+import { useNavigate } from 'react-router-dom';
 
 /**
  * Nessa tela optei por usar uma paginação mais simples pois a api não retorna os dados meta
@@ -16,8 +18,13 @@ import SelectCategories from '../../../components/SelectCategories';
 export default function ListProducts() {
   const [filteredData, setFilteredData] = useState<Product[]>([]);
   const [categoryFilter, setCategoryFilter] = useState<Category | null>(null);
+  const navigate = useNavigate();
 
-  const { data: products, refetch } = useListProducts(categoryFilter?.id);
+  const {
+    data: products,
+    refetch,
+    isLoading,
+  } = useListProducts(categoryFilter?.id);
 
   const handleFilter = (event: React.ChangeEvent<HTMLInputElement>) => {
     const searchTerm = event.target.value.toLowerCase();
@@ -74,10 +81,6 @@ export default function ListProducts() {
     },
   ];
 
-  if (!products) {
-    return <div className="mx-auto max-w-6xl p-4">Loading...</div>;
-  }
-
   return (
     <div className="mx-auto flex max-w-6xl flex-wrap justify-center p-4">
       <div className="flex w-full items-center justify-between py-4">
@@ -85,7 +88,9 @@ export default function ListProducts() {
         <div>
           <button
             className="w-36 rounded bg-green-500 p-2 text-xs uppercase text-white hover:bg-green-400"
-            onClick={() => (window.location.href = '/admin/new-product')}
+            onClick={() => {
+              navigate('/admin/update-product/new');
+            }}
           >
             New Product
           </button>
@@ -103,6 +108,19 @@ export default function ListProducts() {
       </div>
       <div className="flex w-full">
         <div className="flex w-full flex-col items-center rounded-md border p-8">
+          {isLoading && (
+            <div className="flex w-full flex-wrap justify-center">
+              {Array.from({ length: 12 }).map((_, index) => (
+                <div
+                  key={index}
+                  className="m-2 flex w-full flex-col bg-gray-200 p-4"
+                >
+                  <Skeleton count={2} />
+                </div>
+              ))}
+            </div>
+          )}
+
           <DataTable
             pagination
             customStyles={customStyles}

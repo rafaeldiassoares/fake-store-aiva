@@ -1,7 +1,10 @@
 import { FaStore } from 'react-icons/fa';
 import { MdExitToApp } from 'react-icons/md';
+import { useAuth } from '../../hooks/useAuth';
 
 export default function HeaderAdmin() {
+  const { logout } = useAuth();
+
   return (
     <header className="bg-blue-500 text-white">
       <div className="mx-auto px-4">
@@ -30,7 +33,7 @@ export default function HeaderAdmin() {
             </nav>
           </div>
           <div className="mr-8 flex items-center space-x-4">
-            <div className="flex items-center gap-8" onClick={() => {}}>
+            <div className="flex items-center gap-8" onClick={() => logout()}>
               <MdExitToApp size={22} className="cursor-pointer text-white" />
             </div>
           </div>
