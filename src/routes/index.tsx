@@ -3,10 +3,10 @@ import { lazy } from 'react';
 import { Routes as ReactRoutes, Route } from 'react-router-dom';
 import { PrivateRoutes } from '../components/PrivateRoutes';
 import { StoreRoutes } from '../components/StoreRoutes';
+import NewProduct from '../pages/Admin/NewProduct';
+import ListProducts from '../pages/Admin/ListProducts';
 
 const Dashboard = lazy(() => import('../pages/Admin/Dashboard'));
-const ListProducts = lazy(() => import('../pages/Admin/ListProducts'));
-const NewProduct = lazy(() => import('../pages/Admin/NewProduct'));
 const Cart = lazy(() => import('../pages/Cart'));
 const Categories = lazy(() => import('../pages/Categories'));
 const Home = lazy(() => import('../pages/Home'));

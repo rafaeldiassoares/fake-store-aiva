@@ -205,7 +205,8 @@ export default function NewProduct() {
                 <div className="col-span-2 mt-4 flex w-full justify-end gap-2">
                   {!isAddMode && (
                     <button
-                      onClick={() => {
+                      onClick={e => {
+                        e.preventDefault();
                         navigate('/admin/list-products');
                       }}
                       className="w-36 rounded bg-red-500 p-2 text-xs uppercase text-white hover:bg-red-400"
