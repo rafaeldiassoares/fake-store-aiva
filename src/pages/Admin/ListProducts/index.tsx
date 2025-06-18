@@ -89,7 +89,7 @@ export default function ListProducts() {
           <button
             className="w-36 rounded bg-green-500 p-2 text-xs uppercase text-white hover:bg-green-400"
             onClick={() => {
-              navigate('/admin/update-product/new');
+              navigate('/admin/new-product');
             }}
           >
             New Product
