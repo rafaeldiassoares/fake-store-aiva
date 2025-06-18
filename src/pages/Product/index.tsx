@@ -43,7 +43,6 @@ export default function Product() {
                   <img
                     key={index}
                     src={image}
-                    alt={`Product Image ${index + 1}`}
                     className="m-2 h-16 w-16 cursor-pointer object-cover"
                     onClick={() => setImagePreview(image)}
                   />

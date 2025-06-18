@@ -30,7 +30,7 @@ export default function Login() {
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate('/');
+      navigate('/admin');
     }
   }, [isAuthenticated, navigate]);
 
@@ -46,8 +46,6 @@ export default function Login() {
           initialValues={{ email: '', password: '' }}
           validationSchema={validationSchema}
           onSubmit={async values => {
-            console.log(values);
-
             try {
               setIsLoading(true);
               await login(values.email, values.password);

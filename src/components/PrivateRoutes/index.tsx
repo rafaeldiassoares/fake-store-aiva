@@ -1,6 +1,6 @@
 import { Navigate, Outlet } from 'react-router-dom';
 import { useAuthState } from '../../stores/useAuthStore';
-import Header from '../Header';
+import HeaderAdmin from '../HeaderAdmin';
 
 export function PrivateRoutes() {
   const { isAuthenticated } = useAuthState();
@@ -8,9 +8,8 @@ export function PrivateRoutes() {
   if (isAuthenticated) {
     return (
       <>
-        <Header />
+        <HeaderAdmin />
         <div>
-          {/* <Sidebar isMenuVisible={isSideBarVisible} displayMenu={displayMenu} /> */}
           <div>
             <Outlet />
           </div>

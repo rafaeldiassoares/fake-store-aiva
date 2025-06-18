@@ -5,3 +5,13 @@
 .debug {
   outline: 1px solid red;
 }
+
+/* Customização do react-data-table-component  */
+.rdt_TableHeadRow {
+  border-bottom-style: none !important;
+}
+
+.rdt_Pagination {
+  border-top-style: none !important;
+  background-color: transparent !important;
+}

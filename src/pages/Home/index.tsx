@@ -10,7 +10,7 @@ export default function Home() {
   const idCategory = searchParams.get('category-id') || undefined;
   const nameCategory = searchParams.get('category-name') || undefined;
 
-  const { data: products, isLoading } = useListProducts(limit, 0, idCategory);
+  const { data: products, isLoading } = useListProducts(idCategory, limit, 0);
 
   const handleShowMore = () => {
     setLimit(prevLimit => prevLimit + 12);
