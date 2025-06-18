@@ -1,7 +1,7 @@
 import { Formik } from 'formik';
 import { useEffect, useState } from 'react';
 import { FaPlus, FaTrash } from 'react-icons/fa';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import * as Yup from 'yup';
 import ModalNewImage from '../../../components/ModalNewImage';
 import SelectCategories from '../../../components/SelectCategories';
@@ -25,6 +25,7 @@ export default function NewProduct() {
   const [showModal, setShowModal] = useState(false);
   const [images, setImages] = useState<string[]>([]);
   const [isAddMode, setIsAddMode] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (id) {
@@ -54,7 +55,7 @@ export default function NewProduct() {
     <div className="mx-auto flex max-w-6xl flex-wrap justify-center p-4">
       <div className="flex w-full items-center justify-between py-4">
         <span className="text-lg font-bold text-gray-700">
-          Products {'>'} New Product
+          {isAddMode ? 'Add Product' : 'Edit Product'}
         </span>
       </div>
       <div className="flex w-full items-center justify-start gap-2 py-4">
@@ -90,7 +91,7 @@ export default function NewProduct() {
             } finally {
               setImages([]);
               alert('Saved successfully!');
-              window.location.href = '/admin/list-products';
+              navigate('/admin/list-products');
             }
           }}
         >
@@ -103,7 +104,7 @@ export default function NewProduct() {
             touched,
           }) => (
             <form onSubmit={handleSubmit} action="" className="w-full">
-              <div className="m-auto mt-14 grid w-3/4 grid-cols-2 gap-4">
+              <div className="m-auto grid grid-cols-2 gap-4">
                 <div>
                   <label className="block py-2 text-gray-700">Title</label>
                   <input
@@ -203,8 +204,13 @@ export default function NewProduct() {
                 </div>
                 <div className="col-span-2 mt-4 flex w-full justify-end gap-2">
                   {!isAddMode && (
-                    <button className="w-36 rounded bg-red-500 p-2 text-xs uppercase text-white hover:bg-red-400">
-                      Delete
+                    <button
+                      onClick={() => {
+                        navigate('/admin/list-products');
+                      }}
+                      className="w-36 rounded bg-red-500 p-2 text-xs uppercase text-white hover:bg-red-400"
+                    >
+                      Cancel
                     </button>
                   )}
 

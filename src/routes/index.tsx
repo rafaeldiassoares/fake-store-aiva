@@ -1,14 +1,17 @@
+import { lazy } from 'react';
+
 import { Routes as ReactRoutes, Route } from 'react-router-dom';
 import { PrivateRoutes } from '../components/PrivateRoutes';
 import { StoreRoutes } from '../components/StoreRoutes';
-import Dashboard from '../pages/Admin/Dashboard';
-import ListProducts from '../pages/Admin/ListProducts';
-import NewProduct from '../pages/Admin/NewProduct';
-import Cart from '../pages/Cart';
-import Categories from '../pages/Categories';
-import Home from '../pages/Home';
-import Login from '../pages/Login';
-import Product from '../pages/Product';
+
+const Dashboard = lazy(() => import('../pages/Admin/Dashboard'));
+const ListProducts = lazy(() => import('../pages/Admin/ListProducts'));
+const NewProduct = lazy(() => import('../pages/Admin/NewProduct'));
+const Cart = lazy(() => import('../pages/Cart'));
+const Categories = lazy(() => import('../pages/Categories'));
+const Home = lazy(() => import('../pages/Home'));
+const Login = lazy(() => import('../pages/Login'));
+const Product = lazy(() => import('../pages/Product'));
 
 export default function Routes() {
   return (

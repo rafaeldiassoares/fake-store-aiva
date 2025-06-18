@@ -1,3 +1,4 @@
+import Breadcrumb from '../../components/Breadcrumb';
 import CartHandleQtd from '../../components/CartHandleQtd';
 import FinishOrderButton from '../../components/FinishOrderButton';
 import { useCartStore } from '../../stores/useCartStore';
@@ -12,8 +13,12 @@ export default function Cart() {
   return (
     <div>
       <div className="m-auto flex w-full max-w-5xl p-4 text-xl font-bold text-gray-700">
-        <a href="/">Products</a> {' > '} Cart
+        Shopping cart
       </div>
+
+      <Breadcrumb
+        breadcrumbItems={[{ name: 'Home', href: '/' }, { name: 'Cart' }]}
+      />
 
       <div className="justify-left mx-auto flex max-w-5xl flex-row">
         <div className="flex w-full flex-col">

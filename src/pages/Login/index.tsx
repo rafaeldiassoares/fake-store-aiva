@@ -12,7 +12,7 @@ export default function Login() {
   const [isError, setIsError] = useState(false);
   const navigate = useNavigate();
 
-  const loginErrorMessage = 'Login ou senha não conferem';
+  const loginErrorMessage = 'Login or password do not match';
 
   const validationSchema = Yup.object().shape({
     email: Yup.string().required(loginErrorMessage),
@@ -40,7 +40,7 @@ export default function Login() {
         <span className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-blue-500 text-white">
           <FaStore size={28} />
         </span>
-        <h1 className="font-bold text-blue-500">Acessar</h1>
+        <h1 className="font-bold text-blue-500">Sign in</h1>
 
         <Formik
           initialValues={{ email: '', password: '' }}
@@ -49,7 +49,7 @@ export default function Login() {
             try {
               setIsLoading(true);
               await login(values.email, values.password);
-              navigate('/');
+              navigate('/admin');
             } catch (err) {
               const error = err as AxiosError;
 
@@ -87,7 +87,7 @@ export default function Login() {
                 <input
                   name="password"
                   type="password"
-                  placeholder="Senha"
+                  placeholder="Password"
                   onChange={handleChange}
                   className="mb-2 flex rounded-md border border-gray-300 p-2"
                   value={values.password}
@@ -99,7 +99,7 @@ export default function Login() {
                 type="submit"
                 className="mt-8 flex justify-center rounded-md bg-blue-500 p-2 text-white transition-colors hover:bg-blue-600"
               >
-                {isLoading ? 'Carregando...' : 'Entrar'}
+                {isLoading ? 'Loading...' : 'Login'}
               </button>
             </form>
           )}
