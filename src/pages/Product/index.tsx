@@ -4,9 +4,12 @@ import { useParams } from 'react-router-dom';
 import { useGetRelatedProducts } from '../../hooks/useRelateds';
 import ProductCard from '../../components/ProductCard';
 import ProductSkeleton from '../../components/ProductsSkeleton';
+import type { Product } from '../../@types';
+import { useCartStore } from '../../stores/useCartStore';
 
 export default function Product() {
   const { id } = useParams();
+  const addToCart = useCartStore(state => state.addProduct);
 
   const { data: product } = useGetProductById(id || '');
   const [imagePreview, setImagePreview] = useState<string | null>(
@@ -14,6 +17,10 @@ export default function Product() {
   );
 
   const { data: relatedProducts } = useGetRelatedProducts(id || '');
+
+  const handleAddToCart = (product: Product) => {
+    addToCart(product);
+  };
 
   return (
     <div className="flex flex-col items-center justify-center">
@@ -49,7 +56,10 @@ export default function Product() {
                   {product.title}
                 </span>
 
-                <button className="w-36 rounded bg-yellow-500 p-2 text-xs uppercase text-white hover:bg-yellow-400">
+                <button
+                  onClick={() => handleAddToCart(product)}
+                  className="w-36 rounded bg-yellow-500 p-2 text-xs uppercase text-white hover:bg-yellow-400"
+                >
                   Add to cart
                 </button>
               </div>
@@ -86,7 +96,6 @@ export default function Product() {
               ) : (
                 <ProductSkeleton qtd={4} />
               )}
-              s
             </div>
           </div>
         </div>
