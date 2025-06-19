@@ -39,34 +39,39 @@ export default function Home() {
       <Breadcrumb breadcrumbItems={breadcrumbItems} />
 
       <div className="justify-left mx-auto flex max-w-5xl flex-wrap">
-        {products?.length > 0
-          ? products.map((product: any) => (
-              <ProductCard
-                id={product.id}
-                key={product.id}
-                image={product.images[0]}
-                title={product.title}
-                price={product.price}
-              />
-            ))
-          : Array.from({ length: limit }).map((_, index) => (
-              <div
-                key={index}
-                className="m-2 flex w-56 flex-col bg-gray-200 p-4"
-              >
-                <Skeleton count={10} />
-              </div>
-            ))}
+        {products?.length > 0 ? (
+          products.map((product: any) => (
+            <ProductCard
+              id={product.id}
+              key={product.id}
+              image={product.images[0]}
+              title={product.title}
+              price={product.price}
+            />
+          ))
+        ) : isLoading ? (
+          Array.from({ length: limit }).map((_, index) => (
+            <div key={index} className="m-2 flex w-56 flex-col bg-gray-200 p-4">
+              <Skeleton count={10} />
+            </div>
+          ))
+        ) : (
+          <div className="m-2 flex w-full justify-center p-4 text-gray-500">
+            No products found.
+          </div>
+        )}
       </div>
 
-      <div className="mb-16 flex w-full justify-center p-4">
-        <button
-          onClick={handleShowMore}
-          className="rounded bg-gray-900 px-4 py-2 text-white hover:bg-gray-800"
-        >
-          {isLoading ? 'Loading...' : 'Load More'}
-        </button>
-      </div>
+      {products && products.length > 0 && !isLoading && (
+        <div className="mb-16 flex w-full justify-center p-4">
+          <button
+            onClick={handleShowMore}
+            className="rounded bg-gray-900 px-4 py-2 text-white hover:bg-gray-800"
+          >
+            {isLoading ? 'Loading...' : 'Load More'}
+          </button>
+        </div>
+      )}
     </div>
   );
 }
