@@ -56,6 +56,16 @@ A implementação foi seguindo a documentação da [Platzi Fake Store API](https
 
 ### Área administrativa
 
+Para acessar a área administrativa, é necessário utilizar o usuário e senha disponibilizados na documentação da api:
+
+```
+Email: john@mail.com
+Password: changeme
+```
+
+![image](https://github.com/user-attachments/assets/c423c30e-7670-4101-80c6-3b4d9a9748dd)
+
+
 ![image](https://github.com/user-attachments/assets/8ce7811f-b088-4d72-a08a-78c1c21204f8)
 
 - Autenticação de usuário
