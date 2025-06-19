@@ -9,9 +9,9 @@ Ao decorrer desse documento vou mostrando algumas implementações, recursos e t
 - **React**: Biblioteca para construção de interfaces
 - **TypeScript**: Tipagem estática para aumentar a segurança do código
 - **Vite**: Build tool para desenvolvimento rápido (Decisão pessoal por já ter experiência no desenvolvimento de aplicações `SPA` utilizando o `Vite`)
-- **Tailwind CSS**: Framework CSS para estilização (Escolhido por ter experiência com sua sintaxe. Obs.: também poderia ter utilizado `Styled Components`, `MUI` ou `CSS Puro`)
+- **Tailwind CSS**: Framework CSS para estilização (Escolhido por ter experiência com sua sintaxe)
 - **React Query**: Gerenciamento de estado para dados remotos
-- **Zustand**: Gerenciamento de estado global da aplicação (Implementação simples e limpa, acredito ser bem mais simples que React Context e tão bom quanto)
+- **Zustand**: Gerenciamento de estado global da aplicação
 - **Jest e React Testing Library**: Suíte de testes automatizados
 - **Formik + YUP**: Criação e validação de formulários
 - **React Data Table Component**: Implementação de grid de dados com filtros e paginação (Utilizei em diversos projetos e acompanho sua evolução a algum tempo)
